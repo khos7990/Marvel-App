@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/movies">GO BACK</a>
+   <% movieData.data.forEach(function(m) { %>
+       <% if (m.id == movieID) { %>
+    <div class="showMovie"> 
+        <div class= "movieTitle">
+            <%= m.title %>
+        </div>
+        <div class="releaseYear">
+          <%= m.release_date %>
+        </div>
+        <div class="overview"> <% if (m.overview) { %>
+                <%= m.overview %>
+        <% } %>
+        <% } %>
+        <% }) %>
+            </div>
+        <div class="userReview">
+            <h1 class="showReviewTitle"> Review </h1>
+            <a href="/movies/<%=movieID%>/review/new">CREATE A REVIEW</a>
+
+            
+        </div>
+        </div>
+</body>
+</html>

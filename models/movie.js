@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 const User = require('../models/user')
 
-const movieSchema = new.mongoose.Schema({
+const movieSchema = new Schema({
     title: String,
-    year: Number,
-    rating: [userSchema.rating],
-    reviews: [userSchema.reviews]
+    year: String,
+    id: Number
 })
 
 module.exports = mongoose.model('Movie', movieSchema);
