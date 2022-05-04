@@ -66,3 +66,12 @@ border: 2px black solid;
 .showReviewTitle {
   text-align: center;
 }
+
+th {
+  border-bottom: black solid 2px;
+  padding: 20px;
+}
+
+td {
+  padding: 10px;
+}

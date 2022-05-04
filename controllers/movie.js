@@ -3,44 +3,34 @@ const Movie = require('../models/movie')
 const Review = require('../models/review');
 const request = require('request');
 const movie = require('../models/movie');
+const user = require('../models/user');
 
 module.exports = {
     index,
     show,
 }
 
-const rootURL = "https://mcuapi.herokuapp.com/api/v1/"
-
   function index (req,res) {
-    request(rootURL + "movies", function(err,response,body) {
-        const movieData =  JSON.parse(body) 
-       movieData.data.forEach(function(m) {
-        //    Movie.create([
-        //        {title: m.data.title,
-        //         year: m.release_date}
-        //     ])
-        res.render('index', {user: req.user, movieData})
-       })
-    })
-}
-           
+      let user = req.user
+       Movie.find({}, function (err,movie) {
+           res.render('index', {m: movie, user})
+        })
+    }
+
 
 
 function show(req,res) {
-    let movieID = req.params.id
-    request(rootURL + "movies", function(err,response,body) {
-        const movieData = JSON.parse(body)
-       
-                Movie.find({id: movieID} , function (err,movie) {
-                    Review.find({Movie: movie[0]._id}, function (err,review) {
-                        let newReview = (review[0].text)
-                        res.render('movie/show', {movieData, movieID})
-                         })
-                    })
-                })
-            }
-           
+    Movie.findById(req.params.id, function (err, movie) {
+        console.log(movie)
+        Review.find({Movie: movie._id})
+        .populate('User').exec(function (err,review) {
+            res.render('movie/show', {m: movie, review, user: req.user})
 
+        })
+    })
+
+}
+             
 
 
 

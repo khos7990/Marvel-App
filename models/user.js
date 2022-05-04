@@ -4,8 +4,6 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     name: String,
     email: String,
-    reviews: String,
-    rating: Number,
     googleId: String
 }, {
     timestamps: true

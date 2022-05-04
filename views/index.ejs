@@ -17,18 +17,16 @@
               <h1> Welcome <%= user.name %> </h1>
           <% } %>
 
-          <form action="/movies" method="GET">
-            <input type="text" name="movie" placeholder="Enter movie name" autocomplete="off">
-            <button>Submit</button>
-          </form>
+       
           <div class="container">
 
-             <% movieData.data.forEach(function(m) { %>
+             <% m.forEach(function(m) { %>
             <div class="movieDp">  <%= m.title %> 
-          <div class="showMore"> <a class= "showLink" href= "/movies/<%=m.id%>">Show More</a> </div>
+          <div class="showMore"> <a class= "showLink" href= "/movies/<%=m._id%>">Show More</a> </div>
             </div>
              <% }) %> 
 
           </div>
   </body>
 </html>
+

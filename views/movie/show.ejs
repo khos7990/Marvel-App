@@ -9,8 +9,6 @@
 </head>
 <body>
     <a href="/movies">GO BACK</a>
-   <% movieData.data.forEach(function(m) { %>
-       <% if (m.id == movieID) { %>
     <div class="showMovie"> 
         <div class= "movieTitle">
             <%= m.title %>
@@ -21,12 +19,42 @@
         <div class="overview"> <% if (m.overview) { %>
                 <%= m.overview %>
         <% } %>
-        <% } %>
-        <% }) %>
             </div>
         <div class="userReview">
             <h1 class="showReviewTitle"> Review </h1>
-            <a href="/movies/<%=movieID%>/review/new">CREATE A REVIEW</a>
+      
+                <table class="reviewTable">
+                    <thead>  
+                    <tr>
+                        <th>Review:</th>
+                        <th>Rating:</th>
+                        <th>User</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <% review.forEach(function(r) { %>
+                    <tr>
+                        <td> <%= r.text %> </td>
+                        <td><%= r.rating %> </td>    
+                <% if(r.User) { %> 
+                        <td> <%= r.User.name %> </td>
+                        <td> <a href="/movies/<%=r._id%>/review/edit">Edit a Review</a></td>
+                        <td><form action="/movies/<%=r._id%>/review?_method=DELETE"  method="POST">
+                            <button type="submit">Delete Review</button>
+                        </form></td>
+                        <% } else { %>
+                        <td> Unknown </td>
+                    </tr>
+                      <% } %>
+                      <%  }) %>
+                        
+
+                    </tbody>
+                
+            </table>
+            
+            
+            <a href="/movies/<%=m._id%>/review/new">CREATE A REVIEW</a>
 
             
         </div>

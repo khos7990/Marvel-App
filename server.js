@@ -38,7 +38,7 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/movies',movieRouter);
-app.use('/', reviewRouter);
+app.use('/movies', reviewRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

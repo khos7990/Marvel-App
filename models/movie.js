@@ -4,8 +4,7 @@ const User = require('../models/user')
 
 const movieSchema = new Schema({
     title: String,
-    year: String,
-    id: Number
-})
+    release_date: String,
+    overview: String })
 
 module.exports = mongoose.model('Movie', movieSchema);

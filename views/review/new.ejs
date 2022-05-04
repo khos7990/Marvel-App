@@ -9,8 +9,9 @@
 </head>
 <body>
     <h1> Create a Review </h1>
-        <form action="/movies/<%=movieid%>/review/new" method="POST">
+        <form action="/movies/<%=movieid%>/review" method="POST">
         <textarea rows="40" cols="100" name="text"> </textarea>
+        <input type="number" name="rating" placeholder="rating" min="0" max="10">
         <button>Submit</button>
 
     </form> 

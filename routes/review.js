@@ -1,12 +1,21 @@
 var express = require('express');
 var router = express.Router();
 let reviewCtrl = require('../controllers/review');
+const review = require('../models/review');
 
 
 
-router.get('/movies/:id/review/new', reviewCtrl.new)
+router.get('/:id/review/new', reviewCtrl.new)
 
-router.post('/movies/:id/review/new', reviewCtrl.create)
+router.delete('/:id/review', reviewCtrl.delete)
+
+
+router.post('/:id/review', reviewCtrl.create)
+
+router.get('/:id/review/edit',reviewCtrl.edit)
+
+
+router.put('/:id/review', reviewCtrl.update)
 
 
 
