@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var passport = require('passport');
+var methodOveride = require('method-override');
 
 require('dotenv').config();
 
@@ -33,6 +34,7 @@ app.use(session({
   saveUninitialized: true
 }))
 app.use(passport.initialize());
+app.use(methodOveride("_method"));
 app.use(passport.session());
 
 app.use('/', indexRouter);

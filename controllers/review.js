@@ -22,7 +22,6 @@ function create (req,res) {
         if (req.user) {
         review.User = req.user
         }
-        console.log(review)
         review.save(function(err) {
             res.redirect('/movies/' + req.params.id)
 
@@ -32,22 +31,24 @@ function create (req,res) {
 
 function edit (req,res) {
     Review.find({_id: req.params.id}, function(err,review) {
-        res.render('review/edit', {review, rev: req.params.id})
+        let movieId = review[0].Movie
+        console.log(movieId)
+        res.render('review/edit', {review, movieId})
     })
 }
 
 function update (req,res) {
-    // Review.findOneAndReplace(req.params.id, {
-    //     text: req.body.text
-    // })
-    console.log('hitting')
-    console.log(req.body.text)
-    res.redirect('/movies/' + req.params.id)
-}
+   Review.findByIdAndUpdate(req.params.id, 
+    {text: req.body.text,
+    rating:req.body.rating}, function (err,review) {
+     let movieId = review.Movie
+    res.redirect('/movies/' + movieId);
+    }
+   )}
 
 function deleteOne (req,res) {
-    console.log('hitting');
     Review.findOneAndDelete({_id: req.params.id}, function (err,review) {
-        res.redirect('/movies')
+        let movieId = review.Movie
+        res.redirect('/movies/' + movieId)
     })
 }

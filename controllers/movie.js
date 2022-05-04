@@ -21,7 +21,6 @@ module.exports = {
 
 function show(req,res) {
     Movie.findById(req.params.id, function (err, movie) {
-        console.log(movie)
         Review.find({Movie: movie._id})
         .populate('User').exec(function (err,review) {
             res.render('movie/show', {m: movie, review, user: req.user})
@@ -31,6 +30,12 @@ function show(req,res) {
 
 }
              
+ 
+   
+   
+   
+   
+   
 
 
 

@@ -1,8 +1,8 @@
+require('dotenv').config();
 require('./config/database');
 const Movie = require('./models/movie');
 const request = require('request');
 const rootURL = "https://mcuapi.herokuapp.com/api/v1/"
-
   function populate () {
      Movie.deleteMany({}, function(){
         request(rootURL + "movies", function(err,response,body) {

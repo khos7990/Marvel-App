@@ -1,20 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <title>Document</title>
-</head>
-<body>
+<%- include('../partials/header') -%>
+<body class="reviewPage">
+    <a class= "goBackBtn" href="/movies/<%=movieid%>">GO BACK</a>
     <h1> Create a Review </h1>
-        <form action="/movies/<%=movieid%>/review" method="POST">
-        <textarea rows="40" cols="100" name="text"> </textarea>
-        <input type="number" name="rating" placeholder="rating" min="0" max="10">
-        <button>Submit</button>
-
-    </form> 
+       
+        <div class="container justify-content-center">
+            <form class="form-control-lg" action="/movies/<%=movieid%>/review" method="POST">
+                <textarea class="form-control-lg" class="reviewPageTextArea" rows="10" cols="50" name="text" required> </textarea>
+            
+                <div class="m-auto w-auto d-flex justify-content-between">
+                    <select class="rating w-50 me-4 rounded-3" type="number" name="rating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                                <button class="submitReview w-50 rounded-3">Submit</button>
+                </div>
+            
+                </form>
+        </div>
 
 </body>
-</html>
+<%- include('../partials/footer') -%>

@@ -9,7 +9,6 @@ router.get('/:id/review/new', reviewCtrl.new)
 
 router.delete('/:id/review', reviewCtrl.delete)
 
-
 router.post('/:id/review', reviewCtrl.create)
 
 router.get('/:id/review/edit',reviewCtrl.edit)

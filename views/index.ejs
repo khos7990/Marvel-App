@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Homepage</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+<%- include('./partials/header') -%>
+  <body class="homepage">
     <h1 class="title">The Marvelous Page</h1>
     <nav>
       <% if (user) { %>
@@ -21,12 +16,13 @@
           <div class="container">
 
              <% m.forEach(function(m) { %>
-            <div class="movieDp">  <%= m.title %> 
+            <div class="movieDp" style="background-image:url(<%=m.cover_url%>);"> 
+              <%= m.title %> 
           <div class="showMore"> <a class= "showLink" href= "/movies/<%=m._id%>">Show More</a> </div>
             </div>
              <% }) %> 
 
           </div>
   </body>
-</html>
+  <%- include('./partials/footer') -%>
 

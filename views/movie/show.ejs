@@ -1,63 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <title>Document</title>
-</head>
-<body>
-    <a href="/movies">GO BACK</a>
-    <div class="showMovie"> 
-        <div class= "movieTitle">
-            <%= m.title %>
-        </div>
-        <div class="releaseYear">
-          <%= m.release_date %>
-        </div>
-        <div class="overview"> <% if (m.overview) { %>
-                <%= m.overview %>
-        <% } %>
-            </div>
-        <div class="userReview">
-            <h1 class="showReviewTitle"> Review </h1>
-      
-                <table class="reviewTable">
-                    <thead>  
-                    <tr>
-                        <th>Review:</th>
-                        <th>Rating:</th>
-                        <th>User</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <% review.forEach(function(r) { %>
-                    <tr>
-                        <td> <%= r.text %> </td>
-                        <td><%= r.rating %> </td>    
-                <% if(r.User) { %> 
-                        <td> <%= r.User.name %> </td>
-                        <td> <a href="/movies/<%=r._id%>/review/edit">Edit a Review</a></td>
-                        <td><form action="/movies/<%=r._id%>/review?_method=DELETE"  method="POST">
-                            <button type="submit">Delete Review</button>
-                        </form></td>
-                        <% } else { %>
-                        <td> Unknown </td>
-                    </tr>
-                      <% } %>
-                      <%  }) %>
-                        
+<%- include('../partials/header') -%>
 
-                    </tbody>
-                
-            </table>
-            
-            
-            <a href="/movies/<%=m._id%>/review/new">CREATE A REVIEW</a>
+<body class="showpageImage">
+  <a href="/movies">GO BACK</a>
+  <div class="showMovie">
+    <div class="movieTitle"><%= m.title %></div>
+    <div class="releaseYear">Release Date: <%= m.release_date %></div>
+    Overview:
+    <div class="overview">
+      <% if (m.overview) { %> <%= m.overview %> <% } else { %> Coming Soon! <% }
+      %>
+      <div class="trailer">
+        <% if (m.trailer_url) { %>
+        <iframe
+          width="420"
+          height="220"
+          src="<%=m.trailer_url%>"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; 
+            encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        >
+        </iframe>
+        <% } else { %> Not Avaliable! <% } %>
+      </div>
+    </div>
+    <div class="userReview">
+      <h1 class="showReviewTitle">Review</h1>
 
-            
-        </div>
-        </div>
+      <table class="reviewTable">
+        <thead>
+          <tr>
+            <th>Review:</th>
+            <th>Rating:</th>
+            <th>User</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% review.forEach(function(r) { %>
+          <tr>
+            <td class="reviewText"> <li><%= r.text %></li></td>
+            <td><%= r.rating %></td>
+            <% if(r.User) { %>
+            <td><%= r.User.name %></td>
+            <td><a href="/movies/<%=r._id%>/review/edit">Edit a Review</a></td>
+            <td>
+              <form
+                action="/movies/<%=r._id%>/review?_method=DELETE"
+                method="POST"
+              >
+                <button type="submit">Delete Review</button>
+              </form>
+            </td>
+            <% } else { %>
+            <td>Unknown</td>
+          </tr>
+          <% } %> <% }) %>
+        </tbody>
+      </table>
+
+      <a class="createReview" href="/movies/<%=m._id%>/review/new"
+        >CREATE A REVIEW</a
+      >
+    </div>
+  </div>
 </body>
-</html>
+
+<%- include('../partials/footer') -%>
