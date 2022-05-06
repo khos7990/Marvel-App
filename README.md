@@ -7,13 +7,13 @@
 
 
 ## Technologies Used
-- HTML
 - EJS
 - CSS
 - Javascript
 - Express -NodeJs
 - MongoDB
 - Mongoose
+- Marvel API
 
 ## Getting Started:
 ### Heroku Link: https://marvelous-page.herokuapp.com/
