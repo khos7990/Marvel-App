@@ -1,28 +1,8 @@
-<%- include('./partials/header') -%>
+<%- include('../partials/header') -%>
 <body class="homepage">
-  <h1 class="title">The Marvellous Page</h1>
-  <nav>
-    <% if (user) { %>
-    <a href="/logout">Log Out</a>
-    <% } else { %>
-    <a href="/auth/google">Login With Google</a>
-    <% } %>
-    <form class="search" action="/movies/search" method="GET">
-      <input
-        class="searchIpt"
-        name="title"
-        type="search"
-        placeholder="Search for a Movie"
-      />
-      <button class="searchBtn">Search</button>
-    </form>
-  </nav>
-  <% if (user) { %>
-  <h1>Welcome <%= user.name %></h1>
-  <% } %>
-
+  <a class="goBackBtn" href="/movies">GO BACK</a>
   <div class="container">
-    <% m.forEach(function(m) { %> <% if (m.cover_url) { %>
+    <% movie.forEach(function(m) { %> <% if (m.cover_url) { %>
     <div class="movieDp" style="background-image: url(<%=m.cover_url%>)">
       <%= m.title %>
       <div class="showMore">
@@ -44,4 +24,5 @@
     <% } %> <% }) %>
   </div>
 </body>
-<%- include('./partials/footer') -%>
+
+<%- include('../partials/footer') -%>

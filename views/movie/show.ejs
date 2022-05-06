@@ -1,19 +1,20 @@
 <%- include('../partials/header') -%>
 
 <body class="showpageImage">
-  <a href="/movies">GO BACK</a>
+  <a class="goBackBtn" href="/movies">GO BACK</a>
   <div class="showMovie">
-    <div class="movieTitle"><%= m.title %></div>
-    <div class="releaseYear">Release Date: <%= m.release_date %></div>
-    Overview:
-    <div class="overview">
+    <div class="movieTitle display-3"><%= m.title %></div>
+    <div class="releaseYear display-8">Release Date: <%= m.release_date %></div>
+    
+    <div class="overview mt-3">
+        <h2 class="display-6"> Overview: </h2>
       <% if (m.overview) { %> <%= m.overview %> <% } else { %> Coming Soon! <% }
       %>
       <div class="trailer">
         <% if (m.trailer_url) { %>
-        <iframe
-          width="420"
-          height="220"
+        <iframe class="youtubeVid"
+          width="540"
+          height="300"
           src="<%=m.trailer_url%>"
           title="YouTube video player"
           frameborder="0"
@@ -25,44 +26,45 @@
         <% } else { %> Not Avaliable! <% } %>
       </div>
     </div>
-    <div class="userReview">
-      <h1 class="showReviewTitle">Review</h1>
+    <h1 class="showReviewTitle mt-3">Reviews</h1>
+    <a class="createReview" href="/movies/<%=m._id%>/review/new">CREATE A REVIEW</a>
+     
 
       <table class="reviewTable">
         <thead>
           <tr>
-            <th>Review:</th>
-            <th>Rating:</th>
-            <th>User</th>
+            <th class="th">Review:</th>
+            <th class="th">Rating:</th>
+            <th class="th">User</th>
           </tr>
-        </thead>
-        <tbody>
+          </thead>
+          <tbody>
           <% review.forEach(function(r) { %>
-          <tr>
-            <td class="reviewText"> <li><%= r.text %></li></td>
-            <td><%= r.rating %></td>
-            <% if(r.User) { %>
-            <td><%= r.User.name %></td>
-            <td><a href="/movies/<%=r._id%>/review/edit">Edit a Review</a></td>
-            <td>
+          <tr> 
+           
+            <td class=" tableData"> 
+              <li><%= r.text %></li></td>
+            <td class="tableData">
+            <% for(let i= 0; i<r.rating; i++) { %>
+                 <div class="fa fa-star checked"></div> 
+          <% } %>
+            </td>
+            <td class="tableData"><%= r.User.name %></td>
+            <% if(r.User._id.equals(user && user._id)) { %>
+            <td class="tableData"><button class="editBtn"><a href="/movies/review/<%=r._id%>/edit">Edit a Review</a></button> </td>
+            <td class="tableData">
               <form
-                action="/movies/<%=r._id%>/review?_method=DELETE"
+                action="/movies/review/<%=r._id%>?_method=DELETE"
                 method="POST"
               >
-                <button type="submit">Delete Review</button>
+                <button class="deleteBtn" type="submit">Delete Review</button>
               </form>
             </td>
-            <% } else { %>
-            <td>Unknown</td>
           </tr>
-          <% } %> <% }) %>
-        </tbody>
+          <% } %>
+          <% }) %>
+          </tbody>
       </table>
-
-      <a class="createReview" href="/movies/<%=m._id%>/review/new"
-        >CREATE A REVIEW</a
-      >
-    </div>
   </div>
 </body>
 

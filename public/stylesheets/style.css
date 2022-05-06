@@ -1,11 +1,16 @@
 .homepage {
   padding: 50px;
-  background-color: rgb(238, 30, 30)
+  background-image: linear-gradient(
+    to right,
+    rgb(65, 60, 60),
+    rgb(197, 174, 42),
+    rgb(134, 118, 23)
+  );
 }
 
 a {
   color: #ffffff;
-  font-size: 20px ;
+  font-size: 20px;
 }
 
 .title {
@@ -30,7 +35,16 @@ a {
   font-size: 30px;
   background-position: center;
   background-size: cover;
-  
+  margin-top: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.918);
+}
+
+.movieDp:hover {
+  background-color: rgb(90, 85, 85);
+  transform: scale(1.2);
+  z-index: 1;
+  transition: 1s;
 }
 
 .showMore {
@@ -45,45 +59,17 @@ a {
 .showMovie {
   position: relative;
   height: 100vh;
-  width: 40vw;
-  border: solid 2px;
+  width: 80vw;
   margin: 0 auto;
 }
 
 .movieTitle {
   text-align: center;
-  font-size: 30px;
-  font-family: fantasy;
-
-}
-
-.userReview {
-  height: 50vh;
-  width: 40vw;
-  border: solid 2px;
-  position: absolute;
-  bottom: 0;
 }
 
 .showReviewTitle {
   text-align: center;
 }
-
-th {
-  border-bottom: yellow solid 2px;
-  padding-right: 100px;
-  padding-left: 100px;
-}
-
-td {
-  color: yellow;
-  padding-left: 80px;
-}
-
-.reviewText {
-  padding: 0;
-}
-
 
 .showpageImage {
   background-color: rgba(0, 0, 0, 0.918);
@@ -91,16 +77,20 @@ td {
 }
 
 .reviewPage {
-  background-color: rgba(0, 0, 0, 0.918);
-  color: yellow;
+  background-image: linear-gradient(
+    to right,
+    rgb(65, 60, 60),
+    rgb(197, 174, 42),
+    rgb(134, 118, 23)
+  );
+  color: black;
   text-align: center;
-  position: relative;
 }
 
 textarea {
-background-color: rgb(80, 80, 80);
- margin: 0 auto;
- color: yellow;
+  background-color: rgb(80, 80, 80);
+  margin: 0 auto;
+  color: yellow;
 }
 
 .rating {
@@ -112,27 +102,68 @@ background-color: rgb(80, 80, 80);
 
 .goBackBtn {
   position: absolute;
-  left: 0;
-}
-
-.createReview {
-  position: absolute;
-  top: 0;
+  top: 20px;
+  left: 30px;
 }
 
 .trailer {
-text-align: center;
-}
-
-table {
-  margin: 0 auto;
+  text-align: center;
 }
 
 .overview {
   font-size: 14px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .reviewPageTextArea {
-    text-align: center;
+  text-align: center;
+}
+
+.youtubeVid {
+  border-radius: 10px;
+  border: 1px yellow solid;
+}
+
+.deleteBtn {
+  color: black;
+  border: 2px black solid;
+  border-radius: 15px;
+  background-color: red;
+}
+
+.editBtn {
+  border: 2px black solid;
+  border-radius: 15px;
+  background-color: rgb(197, 211, 43);
+  width: 140px;
+}
+.reviewTable {
+  width: 80vw;
+}
+
+.tableData {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.th {
+  padding-left: 20px;
+}
+
+.submitReview {
+  background-color: rgba(245, 245, 245, 0.596);
+}
+.searchBtn {
+  border-radius: 10px;
+  position: relative;
+  left: -63px;
+  height: 30px;
+  border: none;
+  background-color: rgb(253, 253, 170);
+}
+
+.searchIpt {
+  border-radius: 5px;
+  background-color: rgb(159, 165, 170);
+  border: none;
 }
