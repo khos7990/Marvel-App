@@ -23,7 +23,6 @@ function show(req, res) {
     Review.find({ Movie: movie._id })
       .populate("User")
       .exec(function (err, review) {
-        console.log(review);
         res.render("movie/show", { m: movie, review, user: req.user });
       });
   });

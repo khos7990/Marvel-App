@@ -30,7 +30,6 @@ function create(req, res) {
 function edit(req, res) {
   Review.find({ _id: req.params.id }, function (err, review) {
     let movieId = review[0].Movie;
-    console.log(movieId);
     res.render("review/edit", { review, movieId });
   });
 }

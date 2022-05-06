@@ -153,17 +153,10 @@ textarea {
 .submitReview {
   background-color: rgba(245, 245, 245, 0.596);
 }
-.searchBtn {
-  border-radius: 10px;
-  position: relative;
-  left: -63px;
-  height: 30px;
-  border: none;
-  background-color: rgb(253, 253, 170);
-}
 
 .searchIpt {
   border-radius: 5px;
   background-color: rgb(159, 165, 170);
   border: none;
+  width: 15%;
 }

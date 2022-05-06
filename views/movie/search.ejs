@@ -1,6 +1,15 @@
 <%- include('../partials/header') -%>
 <body class="homepage">
   <a class="goBackBtn" href="/movies">GO BACK</a>
+  <form class="search" action="/movies/search" method="GET">
+    <input
+      class="searchIpt"
+      name="title"
+      type="search"
+      placeholder="Search for a Movie"
+    />
+    <button class="btn btn-light searchBtn">Search</button>
+  </form>
   <div class="container">
     <% movie.forEach(function(m) { %> <% if (m.cover_url) { %>
     <div class="movieDp" style="background-image: url(<%=m.cover_url%>)">
