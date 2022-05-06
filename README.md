@@ -1,7 +1,7 @@
 # App Title: The Marvellous Page
 
 ## Description: 
-#### This beautiful page is updated with all of the marvel movies, using a marvel API. By clicking a movie, you are able to read the overview, and watch the trailer of the movie as well. By using google Oauth, a user can log in and be able to perform CRUD functionality. User's can choose to create or update their review, or rating, and can also delete their review if they choose to do so.
+#### This beautiful page is updated with all the marvel movies, using a marvel API. By clicking a movie, you are able to read a brief overview, and watch the trailer of the movie as well. By using google Oauth, a user can log in and be able to perform CRUD functionality. User's can choose to create or update their review, or rating, and can also delete their review if they choose to do so.
 
 
 
